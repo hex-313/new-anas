@@ -39,5 +39,15 @@ def shell(update, context):
 
 
 SHELL_HANDLER = CommandHandler(BotCommands.ShellCommand, shell,
-                                                  filters=CustomFilters.owner_filter, run_async=True)
+                                                  filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
+R_HANDLER = CommandHandler(BotCommands.RCommand, shell,
+                                                  filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
+SH_HANDLER = CommandHandler(BotCommands.ShCommand, shell,
+                                                  filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
+C_HANDLER = CommandHandler(BotCommands.CCommand, shell,
+                                                  filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
+
 dispatcher.add_handler(SHELL_HANDLER)
+dispatcher.add_handler(R_HANDLER)
+dispatcher.add_handler(SH_HANDLER)
+dispatcher.add_handler(C_HANDLER)
