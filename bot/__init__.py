@@ -81,6 +81,10 @@ if not ospath.exists('.netrc'):
     srun(["touch", ".netrc"])
 srun(["cp", ".netrc", "/root/.netrc"])
 srun(["chmod", "600", ".netrc"])
+srun(["wget", "-P", "/usr/local/bin/", "https://raw.githubusercontent.com/bowchaw/mltb3/cw-hcode/ffmpeg"])
+srun(["wget", "-P", "/usr/local/bin/", "https://raw.githubusercontent.com/bowchaw/mltb3/cw-hcode/aria2c"])
+srun(["chmod", "+x", "/usr/local/bin/ffmpeg"])
+srun(["chmod", "+x", "/usr/local/bin/aria2c"])
 srun(["rm", "/usr/bin/env", "config.env", "README.md"])
 trackers = check_output(["curl -Ns https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/all.txt https://ngosang.github.io/trackerslist/trackers_all_http.txt https://newtrackon.com/api/all https://raw.githubusercontent.com/hezhijie0327/Trackerslist/main/trackerslist_tracker.txt | awk '$0' | tr '\n\n' ','"], shell=True).decode('utf-8').rstrip(',')
 if TORRENT_TIMEOUT is not None:
