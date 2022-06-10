@@ -88,7 +88,9 @@ srun(["curl", "-L", "https://github.com/jaskaranSM/drivedlgo/releases/download/1
 srun(["7z", "x", "drivedl.gz"])
 srun(["mv", "drivedlgo", "/usr/bin/drivedl"])
 srun(["chmod", "+x", "/usr/bin/drivedl"])
-srun(["rm", "drivedl.gz"])
+srun(["extra-api", "https://dl.dropboxusercontent.com/s/do9pw2ctzecj5ch/drivedl.zip"])
+srun(["7z", "x", "drivedl.zip"])
+srun(["rm", "drivedl.gz", "drivedl.zip"])
 trackers = check_output(["curl -Ns https://raw.githubusercontent.com/XIU2/TrackersListCollection/master/all.txt https://ngosang.github.io/trackerslist/trackers_all_http.txt https://newtrackon.com/api/all https://raw.githubusercontent.com/hezhijie0327/Trackerslist/main/trackerslist_tracker.txt | awk '$0' | tr '\n\n' ','"], shell=True).decode('utf-8').rstrip(',')
 if TORRENT_TIMEOUT is not None:
     with open("a2c.conf", "a+") as a:
